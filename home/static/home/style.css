@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'MineCrafter', Arial, sans-serif;
+    background-color: #1a1a1a; /* Changed the background color */
+    color: white; /* Changed text color */
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    background-color: #034f5e;
+    padding: 10px;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold; /* Added font weight */
+}
+
+/* Style the main content */
+.intro {
+    padding: 20px;
+    background-color: #262626; /* Changed the background color */
+    border-radius: 10px; /* Increased border radius */
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.intro p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+#p01 {
+    font-size: 20px; /* Increased font size */
+}
+
+#p02 {
+    font-size: 18px; /* Increased font size */
+}
+
+#p03 {
+    font-size: 18px; /* Increased font size */
+    margin-left: 20px; /* Increased left margin */
+}
+
+#p03 ul {
+    list-style-type: disc; /* Changed list style */
+    margin-left: 30px; /* Increased left margin */
+}
+
+/* Style the signup and login buttons */
+.signup,
+.login {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.signup button,
+.login button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signup button {
+    background-color: #45b649; /* Greenish color */
+    color: white;
+}
+
+.signup button:hover {
+    background-color: #3ea43e; /* Darker green on hover */
+}
+
+.login button {
+    background-color: #007bff; /* Blueish color */
+    color: white;
+}
+
+.login button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Additional CSS for styling */
+.about {
+    padding: 20px;
+    background-color: #262626; /* Dark gray background */
+    border-radius: 10px; /* Rounded corners */
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #f9f9f9; /* Light text color */
+    text-align: justify; /* Justify text for a neat look */
+    line-height: 1.6;
+}
+
+.about b {
+    font-size: 24px;
+    color: #007bff; /* Blue color for headers */
+    display: block; /* Separate header from paragraph */
+    margin-bottom: 10px; /* Space below headers */
+}
+
+/* Add some spacing between paragraphs */
+.about p {
+    margin-bottom: 15px;
+}
+
+/* Add a slight top border to separate content */
+.about::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #007bff;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+
+/* Style the footer */
+.footer {
+    height: 50px;
+    background-color: #1a1a1a;
+    margin-top: 30px;
+}

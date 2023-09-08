@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+    <link rel="icon" type="image/jfif" href="{% static 'home/_903ea78e-3359-4bdb-b81c-6c390ba1fb71.jfif' %}">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <div class="navigation">
+        <a href="{% url 'home:home' %}">MinecraftTasks</a>
+        
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'WorldTasks:worlds_list' %}">World</a>
+            <a href="{% url 'SignLog:logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'SignLog:login' %}">Login</a>
+        {% endif %}
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

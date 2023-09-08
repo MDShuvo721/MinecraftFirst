@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'SignLog/style.css' %}">
+    <link rel="icon" type="image/jfif" href="{% static 'SignLog/_903ea78e-3359-4bdb-b81c-6c390ba1fb71.jfif' %}">
+    <title>SignUp | Minecraft Task</title>
+</head>
+<body>
+  
+  <form method="post">
+  <h2>Sign-Up</h2>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+    <p>Already have a Account? Click <a href="{% url 'SignLog:login' %}">Here!</a></p>
+  </form>
+</body>
+</html>

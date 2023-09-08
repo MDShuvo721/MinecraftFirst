@@ -1,0 +1,50 @@
+{% extends 'home/base.html' %}
+
+{% block title %}
+    Home | Minecraft Tasks
+{% endblock %}
+
+{% block content %}
+<div class="intro">
+    <p id="p01">Welcome, Minecraft players!
+        Are you new to Minecraft? You just started playing Minecraft, but not sure what to do next?
+        Are you struggling to survive in Minecraft and do not know how to beat the game?
+    </p>
+    <p id="p02">Don't worry. On this website, we will provide you with tasks to complete and guide you on how to make Minecraft easy and fun for yourself.</p>
+    <div>
+        <p id="p03"><b id="001">To be part of this beginner journey</b>:
+            <ul>
+                <li>First, Signup in our website</li>
+                <li>Second, Create a Minecraft World</li>
+                <li>Third, Give us the name of the world and Game Mode</li>
+            </ul>
+        </p>
+    </div>
+</div>
+
+<div class="signup">
+    <a href="{% url 'SignLog:signup' %}"><button>Sign-Up</button></a><br>
+    Already have a account? Click Here: <br>
+    <a href="{% url 'SignLog:login' %}"><button>Log-In</button></a>
+</div>
+<br>
+<hr>
+<br>
+<div class="about">
+    <p><b>What is Minecraft? Why should you play Minecraft</b><br>
+        Minecraft is a open-world game, where it's world is almost infinite and huge. 
+        Minecraft is adventure game, where you can explore the unknown and build and survive in yourown way.
+        There are endless possibilities you can do. 
+    </p>
+    <p>You can build anything your heart desires. Dream of a majestic castle? Voila! Want a cozy cabin in the woods? Boom! With endless blocks at your fingertips, you're the Picasso of the pixelated world.</p>
+    <p>Jump into caves teeming with treasures, eerie forests with hidden mysteries, and oceans with secrets that only the bravest dare to uncover. Minecraft is an adventure waiting to be explored.</p>
+    <p>Minecraft is a survival game, where you need to survive from Zombie, Spiders and other hostile mobs</p>
+    <p>So, whats keeping you from not playing this game. Start this beautiful adventure right now and explore the unknown.</p>
+    
+    <p>This website will help you on how you can survive in Minecraft and beat it by killing the Ender Dragon.
+        We will provide you with some tasks in ToDo List with proper details and guide you how you can achieve all Achievements in Minecraft.
+    </p>
+
+</div>
+<div class="footer"></div>
+{% endblock %}

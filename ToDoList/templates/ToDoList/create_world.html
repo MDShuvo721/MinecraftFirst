@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'ToDoList/style2.css' %}">
+    <title>World Creation</title>
+</head>
+<body>
+    <div class="create-world-box">
+        <h2 class="new-world-title">Create New World</h2>
+        <form method="post" id="newWorldForm">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="new-world-button" type="submit">Done</button>
+        </form>
+    </div>
+</body>
+</html>

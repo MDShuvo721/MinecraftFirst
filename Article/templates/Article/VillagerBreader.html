@@ -1,0 +1,540 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how to create a highly efficient Villager Breeder in Minecraft. Boost your village's population and gather valuable resources with this step-by-step guide.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/jfif" href="{% static 'ToDoList/_903ea78e-3359-4bdb-b81c-6c390ba1fb71.jfif' %}">
+    <title>Villager Breeder Tutorial | Minecraft Task</title>
+    <style>
+        body{
+            padding-top: 80px;
+            border-radius: 0 0 10px 10px;
+            font-style: italic;
+            line-height: 1.6;
+            }
+    </style>
+</head>
+<body data-bs-theme="dark">
+  <div class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark">
+    <div class="container-fluid"><a class="navbar-brand" href="{% url 'home:home' %}">MinecraftTasks</a></div>
+    {% if request.user.is_authenticated %}
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item"><a href="{% url 'WorldTasks:worlds_list' %}" class="nav-link active">World</a></li>
+        <li class="nav-item"><a href="{% url 'SignLog:logout' %}" class="nav-link active">Logout</a></li>
+      </ul>
+    </div>   
+    {% else %}
+        <a href="{% url 'SignLog:login' %}" class="nav-link active">Login</a>
+    {% endif %}
+    <div class="form-check form-switch mx-4">
+      <input type="checkbox" class="form-check-input p-2" role="switch" id="flexSwithchCheckCheaked" checked
+      onclick="myFunction()">
+    </div>
+  </div>
+    
+    <script>
+      function myFunction() {
+        var element = document.body;
+        element.dataset.bsTheme = element.dataset.bsTheme == "light" ? "dark" : "light";
+      }
+    </script>
+    <div class="container-md">
+        <p class="h2">Minecraft Villager Breeder: A Comprehensive Guide</p><hr>
+        <p>
+          Minecraft is a game of creativity and exploration, and 
+          one of the most rewarding aspects of the game is interacting with villagers. 
+          Villagers offer various trades, which can be beneficial for 
+          acquiring resources, tools, and other items. 
+          However, maintaining a steady supply of villagers in your world can be challenging. 
+          That's where a <strong>Villager Breeder</strong> comes in handy.
+        </p>
+        <p>
+          In this comprehensive guide, 
+          we'll walk you through the process of creating a Villager Breeder in Minecraft, step by step. 
+          By the end, you'll have a thriving village full of villagers ready to trade and 
+          assist you in your adventures.
+        </p>
+        <p class="h4">What is a Villager Breeder? Why do you need it?</p><hr>
+        <p>
+          A Villager Breeder is a contraption 
+          that automatically produces new villagers in the game. 
+          It typically consists of several key components that work together 
+          to create a sustainable population of villagers.
+        </p>
+        <p>
+          A villager breeder is a system in Minecraft where player breeds villagers so that in future 
+          they can use those breeded villagers in 
+          there <a href="https://minecraft.fandom.com/wiki/Tutorials/Villager_trading_hall">
+          Villager Trading Hall</a> or 
+          <a href="https://minecraft.fandom.com/wiki/Tutorials/Iron_golem_farming">Iron Farm</a>.
+          A Villager Breeder can be a valuable addition to your Minecraft world, 
+          providing you with a steady supply of villagers for trading and other purposes. 
+          By following the steps outlined in this guide and 
+          implementing some additional tips and tricks, you'll have a thriving village in no time, 
+          ready to assist you on your Minecraft adventures.
+        </p>
+        <p>In this Article, I will guide you how you can make a easy but efficent Villager Breader
+            with few items and use it whenever you want.
+        </p>
+        <hr>
+        <p class="h3">Here are all the items you will need for this Villager Breader:</p>
+        <div class="container-sm text-center">
+            <div class="row g-2">
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Fence?so=search#Crafting">Fence</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">48</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Fence_Gate?so=search#Crafting">Fence Gate</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">1/2</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Trapdoor?so=search#Crafting">Wooden Trapdoor</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">2</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Log?so=search">Wood</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">45</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Composter?so=search#Crafting">Composter</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">2</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Slab#Crafting">Wooden Slab</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">2</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Bed?so=search#Crafting">Bed</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">3</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Dispenser?so=search#Crafting">Dispenser</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">1</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Powered_Rail?so=search#Crafting">Powered Rails</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">2</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Rail?so=search#Crafting">Rails</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">6</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Redstone_Torch?so=search#Crafting">Redstone Torch</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">1</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Glass?so=search#Smelting">Glass</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">2</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Stone_Bricks?so=search#Crafting">Stone Bricks</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">4</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Button?so=search#Crafting">Button</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">1</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3"><a href="https://minecraft.fandom.com/wiki/Hoe?so=search#Crafting">Hoe</a></div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">1</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">Carrot or Potato</div>
+                </div>
+                <div class="col-5">
+                  <div class="p-3">85</div>
+                </div>
+              </div>
+              <div class="text-bg-info p-3 text-emphasis"><strong>Note:</strong> You don't really need 85 Carrots or Potatos for
+                the Breeder, you only need at least 10-25 any of those.
+              </div>
+        </div>
+        <hr>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">1. Find A Village!</h5>
+            <p class="card-text">Of Course, the first thing you will need is to find a village because only in vilages you will 
+              find villagers and a villager breeder is useless without two villagers. There are other ways to find villager without 
+              a village, such as curing <a href="https://minecraft.fandom.com/wiki/Zombie_Villager?so=search">Zombie Villager</a>. 
+              But, that is much more advanced way. For now, lets focus on finding a village.
+            </p>
+          </div>
+        </div><br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">2. Find A Village Farm</h5>
+            <p class="card-text">In every village, there should be a village farm. You will find one or two Village Farm in 
+              every biome villages. The Village Farm will be the place where we will build our Villager Breeder. You can build this Villager
+              Breeder without a farm but make sure that wherever you are making this Villager Breeder, the Farmland is 1 Block high. <br>
+              <span class="text-info">
+                Make sure the Village Farm is in a clear and plat area and there are enough space around the farm!
+              </span><br>
+              In the below picture, you can see that I have found two Village Farm together combined. Which is very rare! I will continue 
+              my tutorial on Village Breeder on this farm. But surely, you may not find two Village Farm together. 
+              Don't worry I will tell you what to do in a Single Village Farm while showing you how you can do it using my rare two combined village farm.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader01.png' %}" class="card-img-bottom" alt="VB01">
+        </div><br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">3. Break the Composter and collect it!
+            </h5>
+            <p class="card-text">It is guaranteed that you will find a Composter in the Farm. Break it. As you can see that, in my 
+              world, I have found two Village Farms together that's why I found two Composter.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader02.png' %}" class="card-img-bottom" alt="VB02">
+        </div><br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">4. Place a Slab middle of your farm and a Composter on the slab</h5>
+            <p class="card-text">Your Village farm may be 5x7 shaped farm. There should be a straight flow of water.
+              Find the middle point of that Flow of water. I am pretty much sure that that will be Middle point of you farm. 
+              Now place a Slab in the Middle of the point. [Note: Make sure that the Slab is on the Top Half of the dirt near the Middle Point]
+              Water should be flowing under the Placed Slab. Now place a Composter on the Slab. If you are making a Villager Breeder on a single Village Farm,
+              then place another slab besides the placed Slab and again place another Composter on that Slab. <br>
+              You should have two Composter in the middle of the Farm.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader03.png' %}" class="card-img-bottom" alt="VB03">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader04.png' %}" class="card-img-bottom" alt="VB04">
+        </div><br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">5. Expend you Farm to 9x9 Farm and 11x11 Border!</h5>
+            <p class="card-text">Now remove all the border area's Logs and expend you Village Farm to 9x9 Farm. the Middle Point Composter
+              should be the center and base on that Composter Expend you farm by placing dirt each direction until the farm is 9x9. 
+              In the below picture, I have already pointed out. If you successfully placed the dirt blocks then place Woods all around the farm as it was before.
+              It makes the farm look organic. If you don't like it then feel free to place any block you like as the border Land for the Breeder.
+              Afterward you can place a Wood Plank or anything on the Composter so that the villagers does not jump from the Composter and destroy the farm's beauty. <br>
+              You can Place Touch on each side of that block, you just placed on the Composter, so that the crops grow at night time too.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader07.png' %}" class="card-img-bottom" alt="VB05">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader09.png' %}" class="card-img-bottom" alt="VB06">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">6. Till All The Dirt Into Farmland Block</h5>
+            <p class="card-text">Till all the dirt blocks inside the Farm into Farmland Blocks. To do this, you will need a hoe. Use the hoe and the dirt block will
+              turn into Farmland block. Now, you can place Carrots and Potatos inside your Farmland.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader10.png' %}" class="card-img-bottom" alt="VB07">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader11.png' %}" class="card-img-bottom" alt="VB08">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">7. Add Fence and Fence gate</h5>
+            <p class="card-text">
+              Add Fence over the border area's Wood or Logs. Make sure you left open one side's 3 (three) blocks of the farm. In the picture below,
+              I mistakenly left 5 blocks open, but you will only need 3 blocks open in one side. Now which side should be open is important.
+              There should be one side from where you will take your breeder villager and take them out whenever you will be needed them.
+              Make sure that you keep that side opened by 3 blocks. <br>
+              You will also need to open up one block except that 3 block open area. In the below picture, you can see that I have open 5 blocks of area in one side,
+              which is a mistake from me and there are 3 blocks open in each side. That is the area, where we will place our Fence Gate. You can use only one Fence Gate
+              if you want. But, one Fence Gate is must. <br>
+              This will be used to trap villagers. Villagers only can open Wooden Doors, but not Fence Gate. So, that way, you can easily get your dump villager go 
+              inside the Farmland and cloce the Fence Gate to trap them for eternity.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader12.png' %}" class="card-img-bottom" alt="VB09">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader13.png' %}" class="card-img-bottom" alt="VB10">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">8. Clear up the front of the farm and Place bed as suggested Below!</h5>
+            <p class="card-text">
+              At this point, you have placed the Fence and Fence Gate all around the Farmland and keep 3 blocks opened in one side. Now,
+              clear up the front side where you have 3 block opened area. Make sure the land in front of the 3 block open area is plat with the gound.
+              It should be like the picture below. You can see that I have clear the area in front of the open area and made sure that the area is one block lower than the 
+              Farmland. Make sure to clear 7 block from the border wood. Then place Dirt and Bed same way I have. From the Middle, I have placed 4 blocks and more 4 blocks
+              each side, then again I have placed more 3 blocks each side. The shape should be like: (from left to right or right to left) 3 blocks, 4 blocks, 4 blocks, 
+              4 blocks and finally again 3 blocks.
+              Then I have placed the 3 Beds. Make sure to place them as I did. And Add Fence gate around the Beds as I did in the Picture.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader14.png' %}" class="card-img-bottom" alt="VB11">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader16.png' %}" class="card-img-bottom" alt="VB12">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">9. Place 4 Woods</h5>
+            <p class="card-text">
+              Place 2 woods each side of the 3 block opening area as I did in the picture below. Make sure to keep the Center of the 3 Block Opened Area open so that
+              the Baby Villagers may go through it. You can see how I have place those Woods each side and kept open in the Middle. <br>
+              You don't need Wood. You can use Planks if you want because 4 Planks equals to 1 Wood/Log.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader17.png' %}" class="card-img-bottom" alt="VB13">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">10. Dig Four Block between the 4 Woods or Planks placed right now!</h5>
+            <p class="card-text">
+              There is a open area from where you can go from the Farmland to the Bed section. In the Middle of the 4 placed Woods or Planks, dig down 4 blocks as I did.
+              This is important because from this one block hole the Baby Vilager will go down and gather to the Breeder Villager Chamber.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader18.png' %}" class="card-img-bottom" alt="VB14">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">11. Place a temporary block and on that block place a Trap Door</h5>
+            <p class="card-text">
+              First, go to the Bed Section of this Villager Breeder and then Place a temporary block as shown in the picture.
+              Then, Place a Trapdoor on it. <strong class="text-primary">Make sure to place the Trapdoor while facing toward your Farmland!</strong>
+              Then break the temporary Block and open the trap door as I did. <br>
+              <span class="text-info">This will not let the main two Villagers go to the Bed Section. But, the Baby Villager can 
+                go through it because then can go through one block open area.
+              </span>
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader19.png' %}" class="card-img-bottom" alt="VB15">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader20.png' %}" class="card-img-bottom" alt="VB16">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">12. Place another Trapdoor</h5>
+            <p class="card-text">
+              Again from the Bed Section, Place another Trapdoor while facing toward the Farmland. To place this Trapdoor all 
+              you have to do is point the plus shaped pointer in the game to the Farmland Dirt's Upper half and then place it as I did.
+              Then open it. All the Mobs in Minecraft is code in a way that if they see a trapdoor, opened or closed does not matter, 
+              they go through it. 
+              <span class="text-info">
+                This way the Baby Villagers will think that there is a path toward the Bed Section and they will go through it.
+                But, we will keep that trapdoor opened so that whenever the Baby Villager go through it they fall into the hall.
+              </span>
+              <div class="text-bg-success p-3"><b>Make sure to open the Trapdoor. Don't keep it close so That
+                the Baby Villager go through it.</b>
+              </div>
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader21.png' %}" class="card-img-bottom" alt="VB17">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader22.png' %}" class="card-img-bottom" alt="VB18">
+        </div><br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">13. Go into the Hole and Break Two Blocks tall 5 Block area</h5>
+            <p class="card-text">
+              Now, go into the 1 Block Hole. Make sure that The Hole is 4 Block Deep. <br>
+              Then, Start to clear up 5 block width area which should be 2 Block Tall toward the Bed Section.
+              Look at the picture below, you can see that first I have gone into the hole and then I started to break down all the dirt or 
+              stone block and make a 5 block width area. This should be 2 block tall so that when the baby villager grow up then they can 
+              stay there without any problem.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader23.png' %}" class="card-img-bottom" alt="VB19">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader24.png' %}" class="card-img-bottom" alt="VB20">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader26.png' %}" class="card-img-bottom" alt="VB21">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader25.png' %}" class="card-img-bottom" alt="VB22">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">14. Make a Stair Path at left or right.</h5>
+            <p class="card-text">
+              Now, go to the 5th block of the 2 Block Tall and 5 Block Width area you just made now. Choose any side, left or right and 
+              make a stair path as I did in the picture. <br>
+              All you have to do is first break all the blocks over your head. Hopefully, there must be only 1 Block to break. Then,
+              at any side, break 2 blocks and keep one block higher than you so that you can easily go up. 
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader27.png' %}" class="card-img-bottom" alt="VB23">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">15. Break 4 Blocks opposite of your Stair Path</h5>
+            <p class="card-text">
+              Now, Break down 4 Block from Top to down in opposite direction of your stair Path. To understand better see the picture.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader28.png' %}" class="card-img-bottom" alt="VB24">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">16. Place a Redstone Touch</h5>
+            <p class="card-text">
+              Place a Redstone Touch where you have broke 4 Blocks right now.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader29.png' %}" class="card-img-bottom" alt="VB25">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">17. Place Stone Bricks As I did</h5>
+            <p class="card-text">
+              First Place a Stone Brick top of the Redstone Touch and then Place another Stone Brick Beside it as I did.
+              Then place more 2 Stone Bricks top of the stair as I did. 
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader30.png' %}" class="card-img-bottom" alt="VB26">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader31.png' %}" class="card-img-bottom" alt="VB27">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader32.png' %}" class="card-img-bottom" alt="VB28">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">18. Break two more Blocks opposite side of the Stair and Place Dispenser and two Powered Rails</h5>
+            <p class="card-text">
+              First, Break 2 Blocks again in the opposite direction of the Stair Path.
+              Then,Place a Dispenser facing toward you. Make sure to place the Dispenser in your direction AKA in the Stair Path Direction.
+              Now, Place two Powered Rails in front of the the Dispenser. The Redstone Touch you have placed previously will activate them.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader33.png' %}" class="card-img-bottom" alt="VB29">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader34.png' %}" class="card-img-bottom" alt="VB30">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader35.png' %}" class="card-img-bottom" alt="VB31">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">19. Place Rails on each Stair Path Block</h5>
+            <p class="card-text">
+              Place as many Rails you want from the Powered Rails. You must place 2 Rails for now.
+              2 Rails on the Stone Bricks of the Stair Path. Other Rails will be used to take the villagers from the Villger Breeder to any 
+              other place.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader36.png' %}" class="card-img-bottom" alt="VB32">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">20. Place a Button on the Dispenser and insert Minecarts as many as you wish.</h5>
+            <p class="card-text">
+              Place a Button on top of the Dispenser and you can insert Minecarts into the Dispenser as you wish. The Minecarts will be used to 
+              take out the Breeder Villagers out and help you to take them anywhere you want. The Button will activate the Dispenser and the 
+              Dispenser will release one Minecarts if you have insert them into the Dispenser and then take the Villager into the Minecarts and 
+              move them wherever you want.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader37.png' %}" class="card-img-bottom" alt="VB33">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader38.png' %}" class="card-img-bottom" alt="VB34">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">21. Break the Block as I did and Place two Glasses.</h5>
+            <p class="card-text">
+              Now, Break one block as I did in the Picture below. Then, place a Glass at the broken block. Then add another Glass on top of
+              rail way path.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader39.png' %}" class="card-img-bottom" alt="VB35">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader40.png' %}" class="card-img-bottom" alt="VB36">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader41.png' %}" class="card-img-bottom" alt="VB37">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">22. Now, Place water in the Hole</h5>
+            <p class="card-text">
+              Now, go inside the Farmland and then Place water in the hole as I did. Make sure your plus pointer is on the bottom Block of 
+              the hole. <br>
+              This water will push the Baby Villager to toward your Powered Rails. This way you can Use you Breeder Villagers.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader42.png' %}" class="card-img-bottom" alt="VB38">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">23. Open up all the fence gate and let two Villagers inside the Farmland</h5>
+            <p class="card-text">
+              Now, Open up all the Fence Gate you have placed and let only two Villagers go inside the Farmland. If You
+              have trapped all the villager inside their house then let only two Villagers go out. Make sure that the Two 
+              Villagers choose the Farmer Profession, else it will slow down your Villager Breeder. Both of them must become Farmers
+              to make the Villager Breeder more efficent.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader43.png' %}" class="card-img-bottom" alt="VB39">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader44.png' %}" class="card-img-bottom" alt="VB40">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">24. Fill up all the Farmland with Dirt and make all the newly placed Dirt into Farmland</h5>
+            <p class="card-text">
+              There must be still some part of the land is filled with Water. But our farm is made to run with single block water. Except
+              for the Composter and the Slabs under it, make sure you fill all other Water Flowing Blocks with Dirt then use the Hoe again to 
+              make all the dirt blocks into Farmland. Afterward, Place all the Carrots or Potatos you have in the Farmland. Make sure to keep
+              some Carrots or Potatos in your Inventory.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader45.png' %}" class="card-img-bottom" alt="VB41">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader46.png' %}" class="card-img-bottom" alt="VB42">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader47.png' %}" class="card-img-bottom" alt="VB43">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">25. Give Carrots or Potatos to the Villagers</h5>
+            <p class="card-text">
+              Final step is to provide your two Farmer Villager with Carrots or Potatos whichever you have placed in the Farm.
+              To provide them or give them the Carrots or Potatos, all you need to do is hole them in your hand and press 'q' in your keyboard.
+              <br> Your Villager Breeder should be look something like the second Picture.
+            </p>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader48.png' %}" class="card-img-bottom" alt="VB44">
+          <img src="{% static 'Article/VillagerBreader/VillageBreader49.png' %}" class="card-img-bottom" alt="VB45">
+        </div> <br>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">26. Have Patience and Wait until your Villager willing to Breed and in a few minutes you will have a Baby Villager in side your Village Chamber</h5>
+          </div>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader50.png' %}" class="card-img-bottom" alt="VB46"> <br>
+          <h5 class="card-text">whenever Your Baby Villager Grow up and You want to Use them, use the Button and make sure to 
+            insert Minecarts into the Dispenser. I hope your Villager Breeder Will work.
+          </h5>
+          <img src="{% static 'Article/VillagerBreader/VillageBreader51.png' %}" class="card-img-bottom" alt="VB16">
+        </div> <br>
+        <div class="container-sm">
+          <h3>Consider this tips:</h3>
+          <ul>
+            <li>Keep the area well-lit to prevent hostile mobs from spawning and harming your villagers.</li>
+            <li>If the Villagers are not willing to breed in 2 Game Days, replace them with other Villagers. Make sure that there is 
+              not hostile Mob near the farm at day time because Mostly Villagers will breed at Day Time. 
+            </li>
+            <li>Once your villagers grow up, you can assign them to 
+              specific workstations to access various trades. This can be a valuable source of resources and items.</li>
+            <li>Consider building a trading hall nearby where you can access the trades offered by your villagers easily.</li>
+          </ul>
+          <h4>Thank You for reading my article. I hope this Article helped you in some way and hope that your Villager
+            Breeder works as fine as It should be. If you find this article handful then please share this article to your friends And
+            Support us!
+          </h4>
+        </div>
+    </div>
+</body>
+</html>
