@@ -1,0 +1,56 @@
+/* Navigation styles */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    background-color: #034f5e;
+    padding: 10px;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+/* Additional CSS for enhancing the design */
+.card-header {
+    background-color: #034f5e; /* Dark teal color */
+    color: white;
+    padding: 10px;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+    background-color: #f0e8d4; /* Parchment paper-like color */
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.card-footer {
+    background-color: #1a1a1a; /* Dark background for footer */
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 10px;
+}
+
+.card-footer a {
+    margin: 0 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.card-footer a:hover {
+    text-decoration: none;
+}
+
+.text-bg-info {
+    background-color: #034f5e; /* Dark teal color for extra note */
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
